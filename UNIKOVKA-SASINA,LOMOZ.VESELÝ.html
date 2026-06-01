@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Úniková hra – Jazzový klub 1927</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <header>
+        <h1>🎷 Úniková hra: Jazzový klub 1927</h1>
+        <p>
+            Ocitli jste se v uzamčeném jazzovém klubu roku 1927.
+            Vyřešte všechny hudební hádanky a získejte kód k otevření dveří.
+        </p>
+    </header>
+
+    <div class="top-bar">
+        <div class="timer">
+            ⏳ Zbývající čas:
+            <span id="time">20:00</span>
+        </div>
+
+        <button id="hintBtn">💡 Nápověda</button>
+    </div>
+
+    <div class="progress-wrapper">
+        <div class="progress-bar" id="progressBar">0%</div>
+    </div>
+
+    <!-- HÁDANKA 1 -->
+    <section class="puzzle" id="puzzle1">
+        <h2>1. Kvíz</h2>
+        <p>Kdo je známý jako „král jazzu“?</p>
+
+        <select id="quizAnswer">
+            <option value="">Vyberte odpověď</option>
+            <option>Duke Ellington</option>
+            <option>Louis Armstrong</option>
+            <option>Benny Goodman</option>
+            <option>Glenn Miller</option>
+        </select>
+
+        <button onclick="checkQuiz()">Ověřit</button>
+
+        <p class="message" id="quizMessage"></p>
+    </section>
+
+    <!-- HÁDANKA 2 -->
+    <section class="puzzle locked" id="puzzle2">
+        <h2>2. Přiřazování pojmů</h2>
+
+        <p>Vyplň správné významy:</p>
+
+        <label>Jazz:</label>
+        <input id="jazzInput" placeholder="Význam">
+
+        <label>Swing:</label>
+        <input id="swingInput" placeholder="Význam">
+
+        <label>Improvizace:</label>
+        <input id="improvInput" placeholder="Význam">
+
+        <button onclick="checkMatching()">Ověřit</button>
+
+        <p class="message" id="matchMessage"></p>
+    </section>
+
+    <!-- HÁDANKA 3 -->
+    <section class="puzzle locked" id="puzzle3">
+        <h2>3. Hudební šifra</h2>
+
+        <p>
+            Z těchto písmen slož slovo:
+        </p>
+
+        <div class="letters">
+            Z &nbsp; A &nbsp; J &nbsp; Z
+        </div>
+
+        <input id="cipherInput" placeholder="Složené slovo">
+
+        <button onclick="checkCipher()">Ověřit</button>
+
+        <p class="message" id="cipherMessage"></p>
+    </section>
+
+    <!-- HÁDANKA 4 -->
+    <section class="puzzle locked" id="puzzle4">
+        <h2>4. Časová osa</h2>
+
+        <p>
+            Zapiš správné pořadí čísel oddělené pomlčkami.
+        </p>
+
+        <ol>
+            <li>Vznik jazzu v New Orleans</li>
+            <li>Rozmach swingu</li>
+            <li>Jazz Age ve 20. letech</li>
+        </ol>
+
+        <p>Příklad zápisu: 1-2-3</p>
+
+        <input id="timelineInput" placeholder="Pořadí">
+
+        <button onclick="checkTimeline()">Ověřit</button>
+
+        <p class="message" id="timelineMessage"></p>
+    </section>
+
+    <!-- KÓD -->
+    <section class="puzzle locked" id="finalPuzzle">
+        <h2>5. Závěrečný kód</h2>
+
+        <p>
+            Všechny úkoly splněny!
+            Získali jste kód:
+        </p>
+
+        <div class="code-box" id="revealedCode">
+            1927
+        </div>
+
+        <p>Zadejte kód pro otevření dveří:</p>
+
+        <input id="finalCodeInput" maxlength="4">
+
+        <button onclick="checkFinalCode()">Otevřít dveře</button>
+
+        <p class="message" id="finalMessage"></p>
+
+        <div id="doorContainer" class="hidden">
+            <div class="door open"></div>
+        </div>
+    </section>
+
+</div>
+
+<!-- Audio -->
+<audio id="successSound">
+    <source src="https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg" type="audio/ogg">
+</audio>
+
+<audio id="errorSound">
+    <source src="https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg" type="audio/ogg">
+</audio>
+
+<script src="script.js"></script>
+</body>
+</html>
